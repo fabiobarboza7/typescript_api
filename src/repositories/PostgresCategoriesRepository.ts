@@ -5,7 +5,7 @@ import {
 } from "./ICategoriesRepository";
 
 class PostgresCategoriesRepository implements ICategoriesRepository {
-  finbyName(name: string): Category {
+  findByName(name: string): Category {
     console.log(name);
     return null;
   }
