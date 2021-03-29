@@ -1,6 +1,19 @@
 version: "3.7"
 
 services:
+  database:
+    image: postgres
+    container_name: typeform_postgres_db
+    restart: always
+    ports:
+      - 5454:5454
+    environment:
+      - POSTGRES_USER=docker
+      - POSTGRES_PASSWORD=123456
+      - POSTGRES_DB=typeform_postgres_db
+    volumes:
+      - pgdata:/data/postgres
+    command: -p 5454
   app:
     build: .
     container_name: TypeScript
@@ -8,3 +21,11 @@ services:
       - 3333:3333
     volumes:
       - .:/usr/app
+    links:
+      - database
+    depends_on:
+      - database
+
+volumes:
+  pgdata:
+    driver: local
