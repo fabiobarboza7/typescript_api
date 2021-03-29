@@ -1,8 +1,12 @@
 import express from "express";
 
+import "reflect-metadata";
+
 import { router } from "./routes";
 
 import "./database";
+
+import "./shared/container";
 
 const app = express();
 
